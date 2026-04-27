@@ -470,6 +470,13 @@
     letter-spacing: .5px;
     text-align: center;
     padding: 4px;
+    overflow: hidden;
+  }
+  .cf-card-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
   }
   .cf-card-text {
     flex: 1;
@@ -623,132 +630,6 @@
     .cf-slide h2 { font-size: 18px; }
     .cf-actions { padding: 12px 14px 14px; }
   }
-
-  /* ================================================
-     IMPRESSUM – Bottom Sheet
-     ================================================ */
-
-  /* Footer-Button (sieht aus wie Link) */
-  .footer-link-btn {
-    background: none;
-    border: none;
-    padding: 0;
-    margin: 0;
-    color: var(--text-subtle);
-    text-decoration: none;
-    font: inherit;
-    font-size: 11px;
-    letter-spacing: .02em;
-    cursor: pointer;
-    transition: color .15s ease;
-  }
-  .footer-link-btn:hover { color: var(--text-muted); }
-
-  /* Backdrop */
-  .imp-backdrop {
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.55);
-    z-index: 1100;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity .25s ease;
-  }
-  .imp-backdrop.open {
-    opacity: 1;
-    pointer-events: auto;
-  }
-
-  /* Sheet */
-  .imp-sheet {
-    position: fixed;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 1101;
-    background: var(--bg);
-    border-top: 1px solid var(--border);
-    border-radius: 20px 20px 0 0;
-    max-height: 85dvh;
-    display: flex;
-    flex-direction: column;
-    transform: translateY(100%);
-    transition: transform .3s cubic-bezier(0.2, 0.8, 0.2, 1);
-    box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.4);
-  }
-  .imp-sheet.open {
-    transform: translateY(0);
-  }
-
-  .imp-handle {
-    flex-shrink: 0;
-    width: 40px;
-    height: 4px;
-    background: var(--border-strong);
-    border-radius: 999px;
-    margin: 12px auto 4px;
-  }
-
-  .imp-topbar {
-    flex-shrink: 0;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 12px 18px 14px;
-    border-bottom: 1px solid var(--border);
-  }
-  .imp-topbar h2 {
-    font-size: 16px;
-    font-weight: 600;
-    color: var(--text);
-    letter-spacing: -0.01em;
-    margin: 0;
-  }
-  .imp-close {
-    background: transparent;
-    border: 1px solid var(--border);
-    color: var(--text-muted);
-    width: 32px;
-    height: 32px;
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    font-size: 18px;
-    line-height: 1;
-    padding: 0;
-    font-family: inherit;
-    transition: background .15s ease, border-color .15s ease;
-  }
-  .imp-close:hover { background: var(--surface); border-color: var(--border-strong); }
-
-  .imp-body {
-    flex: 1;
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-    padding: 22px 22px 32px;
-    font-size: 13px;
-    color: var(--text-muted);
-    line-height: 1.65;
-  }
-  .imp-body p {
-    margin: 0 0 16px 0;
-  }
-  .imp-body p:last-child { margin-bottom: 0; }
-  .imp-body strong {
-    color: var(--text);
-    font-weight: 600;
-    display: block;
-    margin-bottom: 4px;
-  }
-  .imp-body a {
-    color: var(--primary);
-    text-decoration: none;
-  }
-  .imp-body a:hover { text-decoration: underline; }
-
-  body.imp-open { overflow: hidden; }
 </style>
 </head>
 <body>
@@ -762,7 +643,7 @@
     </div>
 
     <h1>Easyglenn</h1>
-    <p class="bio">Kurze Bio von Glenn. Ein Satz, der sagt wer er ist und was er anbietet.</p>
+    <p class="bio">It's Time to Unlock your Prime</p>
   </section>
 
   <!-- ================ BUTTONS ================ -->
@@ -793,7 +674,7 @@
       <span>TikTok</span>
     </a>
 
-    <a class="btn btn-secondary" href="mailto:glenn-reichardt@gmx.de?subject=Anfrage%20%C3%BCber%20BioLink">
+    <a class="btn btn-secondary" href="mailto:glenn@example.com?subject=Anfrage%20%C3%BCber%20BioLink">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
         <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
         <polyline points="22,6 12,13 2,6"/>
@@ -824,7 +705,7 @@
     <!-- Abschnitt 2: Tiefpunkt -->
     <article class="story-item">
       <div class="story-image">
-        <img src="https://bzejndghppuipnedasuv.supabase.co/storage/v1/object/public/Glenn/Glenn2.jpeg" alt="Glenn während des Tiefpunkts" style="object-position: center 25%;" />
+        <img src="https://bzejndghppuipnedasuv.supabase.co/storage/v1/object/public/Glenn/Glenn2.jpeg" alt="Glenn während des Tiefpunkts" />
       </div>
       <h2>Der Tiefpunkt</h2>
       <p>Meinen mentalen Tiefpunkt hatte ich während der Corona-Zeit. Ich war übergewichtig, unzufrieden mit mir selbst und habe stark mit meinem Selbstwert gekämpft.</p>
@@ -836,7 +717,7 @@
     <!-- Abschnitt 3: Heute -->
     <article class="story-item">
       <div class="story-image">
-        <img src="https://bzejndghppuipnedasuv.supabase.co/storage/v1/object/public/Glenn/Glenn3.jpeg" alt="Glenn heute" style="object-position: center 25%;" />
+        <img src="https://bzejndghppuipnedasuv.supabase.co/storage/v1/object/public/Glenn/Glenn3.jpeg" alt="Glenn heute" />
       </div>
       <h2>Heute – Was Fitness für mich bedeutet</h2>
       <p>Heute weiß ich, dass Fitness viel mehr ist als nur Training. Durch bewusste Ernährung, Bewegung und Sport habe ich nicht nur meinen Körper verändert, sondern auch mein Selbstbewusstsein aufgebaut.</p>
@@ -848,45 +729,10 @@
   <!-- ================ FOOTER ================ -->
   <footer>
     powered by <a href="https://viuno.de" target="_blank" rel="noopener">viuno</a>
-    <div style="margin-top: 4px;"><button type="button" class="footer-link-btn" id="open-impressum">Impressum</button></div>
+    <div style="margin-top: 4px;"><a href="https://viuno.de/impressum" target="_blank" rel="noopener">Impressum</a></div>
   </footer>
 
 </main>
-
-<!-- ================ IMPRESSUM BOTTOM SHEET ================ -->
-<div class="imp-backdrop" id="imp-backdrop"></div>
-<div class="imp-sheet" id="imp-sheet" role="dialog" aria-modal="true" aria-labelledby="imp-title">
-  <div class="imp-handle" aria-hidden="true"></div>
-  <div class="imp-topbar">
-    <h2 id="imp-title">Impressum</h2>
-    <button type="button" class="imp-close" id="imp-close" aria-label="Schließen">×</button>
-  </div>
-  <div class="imp-body">
-    <p>
-      <strong>Glenn Reichardt</strong>
-      Lorbeerstr. 42<br/>
-      70619 Stuttgart<br/>
-      Deutschland
-    </p>
-    <p>
-      Tel.: 017632112881<br/>
-      E-Mail: <a href="mailto:einfachglenn@outlook.com">einfachglenn@outlook.com</a>
-    </p>
-    <p>
-      <strong>Umsatzsteuer-Identifikationsnummer</strong>
-      DE341330646
-    </p>
-    <p>
-      <strong>Zuständige Aufsichtsbehörde</strong>
-      Für das Angebot audiovisueller Mediendienste:<br/>
-      Landesanstalt für Kommunikation Baden-Württemberg (LFK)<br/>
-      Reinsburgstraße 27, 70178 Stuttgart, Deutschland
-    </p>
-    <p>
-      Wir sind zur Teilnahme an einem Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle weder verpflichtet noch bereit.
-    </p>
-  </div>
-</div>
 
 <!-- ================ COACHING FORM OVERLAY ================ -->
 <div class="cf-overlay" id="cf-overlay" role="dialog" aria-modal="true" aria-labelledby="cf-current-title">
@@ -971,42 +817,42 @@
 
           <div class="cf-cards" data-field="bodyfat" data-single="true">
             <button type="button" class="cf-card" data-value="10">
-              <div class="cf-card-img">Bild<br/>~10%</div>
+              <div class="cf-card-img"><img src="https://bzejndghppuipnedasuv.supabase.co/storage/v1/object/public/Glenn/KFA10.png" alt="KFA ~10%" /></div>
               <div class="cf-card-text">
                 <div class="cf-card-title">~10%</div>
                 <div class="cf-card-desc">Sehr definiert</div>
               </div>
             </button>
             <button type="button" class="cf-card" data-value="15">
-              <div class="cf-card-img">Bild<br/>~15%</div>
+              <div class="cf-card-img"><img src="https://bzejndghppuipnedasuv.supabase.co/storage/v1/object/public/Glenn/kfa15.png" alt="KFA ~15%" /></div>
               <div class="cf-card-text">
                 <div class="cf-card-title">~15%</div>
                 <div class="cf-card-desc">Definiert</div>
               </div>
             </button>
             <button type="button" class="cf-card" data-value="20">
-              <div class="cf-card-img">Bild<br/>~20%</div>
+              <div class="cf-card-img"><img src="https://bzejndghppuipnedasuv.supabase.co/storage/v1/object/public/Glenn/kfa20.png" alt="KFA ~20%" /></div>
               <div class="cf-card-text">
                 <div class="cf-card-title">~20%</div>
                 <div class="cf-card-desc">Leicht sichtbar</div>
               </div>
             </button>
             <button type="button" class="cf-card" data-value="25">
-              <div class="cf-card-img">Bild<br/>~25%</div>
+              <div class="cf-card-img"><img src="https://bzejndghppuipnedasuv.supabase.co/storage/v1/object/public/Glenn/kfa25.png" alt="KFA ~25%" /></div>
               <div class="cf-card-text">
                 <div class="cf-card-title">~25%</div>
                 <div class="cf-card-desc">Etwas weich</div>
               </div>
             </button>
             <button type="button" class="cf-card" data-value="30">
-              <div class="cf-card-img">Bild<br/>~30%</div>
+              <div class="cf-card-img"><img src="https://bzejndghppuipnedasuv.supabase.co/storage/v1/object/public/Glenn/kfa30.png" alt="KFA ~30%" /></div>
               <div class="cf-card-text">
                 <div class="cf-card-title">~30%</div>
                 <div class="cf-card-desc">Weich</div>
               </div>
             </button>
             <button type="button" class="cf-card" data-value="35">
-              <div class="cf-card-img">Bild<br/>~35%+</div>
+              <div class="cf-card-img"><img src="https://bzejndghppuipnedasuv.supabase.co/storage/v1/object/public/Glenn/kfa35.png" alt="KFA ~35%+" /></div>
               <div class="cf-card-text">
                 <div class="cf-card-title">~35%+</div>
                 <div class="cf-card-desc">Sehr weich</div>
@@ -1416,30 +1262,6 @@
   // ESC to close
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape' && overlay.classList.contains('open')) close();
-  });
-
-  // ================ Impressum Bottom Sheet ================
-  const impBackdrop = document.getElementById('imp-backdrop');
-  const impSheet = document.getElementById('imp-sheet');
-  const impOpenBtn = document.getElementById('open-impressum');
-  const impCloseBtn = document.getElementById('imp-close');
-
-  function openImpressum() {
-    impBackdrop.classList.add('open');
-    impSheet.classList.add('open');
-    document.body.classList.add('imp-open');
-  }
-  function closeImpressum() {
-    impBackdrop.classList.remove('open');
-    impSheet.classList.remove('open');
-    document.body.classList.remove('imp-open');
-  }
-
-  impOpenBtn.addEventListener('click', openImpressum);
-  impCloseBtn.addEventListener('click', closeImpressum);
-  impBackdrop.addEventListener('click', closeImpressum);
-  document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape' && impSheet.classList.contains('open')) closeImpressum();
   });
 })();
 </script>
