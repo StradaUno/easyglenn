@@ -429,7 +429,24 @@
     color: var(--primary-text);
   }
 
-  /* Card-Auswahl (für KFA, Aktivitätslevel) */
+  /* ---------- KFA Übersichtsbild ---------- */
+  .cf-bf-image-wrap {
+    width: 100%;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-img);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .cf-bf-image-wrap img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* Card-Auswahl (für Aktivitätslevel) */
   .cf-cards {
     display: flex;
     flex-direction: column;
@@ -813,51 +830,22 @@
       <div class="cf-slide">
         <div class="cf-slide-inner">
           <h2>Körperfettanteil</h2>
-          <p class="cf-sub">Wähle das Bild, das am ehesten zu dir passt. Keine Sorge – das ist nur eine grobe Einschätzung.</p>
+          <p class="cf-sub">Wähle den Wert, der am ehesten zu dir passt. Keine Sorge – das ist nur eine grobe Einschätzung.</p>
 
-          <div class="cf-cards" data-field="bodyfat" data-single="true">
-            <button type="button" class="cf-card" data-value="10">
-              <div class="cf-card-img"><img src="https://bzejndghppuipnedasuv.supabase.co/storage/v1/object/public/Glenn/KFA10.png" alt="KFA ~10%" /></div>
-              <div class="cf-card-text">
-                <div class="cf-card-title">~10%</div>
-                <div class="cf-card-desc">Sehr definiert</div>
-              </div>
-            </button>
-            <button type="button" class="cf-card" data-value="15">
-              <div class="cf-card-img"><img src="https://bzejndghppuipnedasuv.supabase.co/storage/v1/object/public/Glenn/kfa15.png" alt="KFA ~15%" /></div>
-              <div class="cf-card-text">
-                <div class="cf-card-title">~15%</div>
-                <div class="cf-card-desc">Definiert</div>
-              </div>
-            </button>
-            <button type="button" class="cf-card" data-value="20">
-              <div class="cf-card-img"><img src="https://bzejndghppuipnedasuv.supabase.co/storage/v1/object/public/Glenn/kfa20.png" alt="KFA ~20%" /></div>
-              <div class="cf-card-text">
-                <div class="cf-card-title">~20%</div>
-                <div class="cf-card-desc">Leicht sichtbar</div>
-              </div>
-            </button>
-            <button type="button" class="cf-card" data-value="25">
-              <div class="cf-card-img"><img src="https://bzejndghppuipnedasuv.supabase.co/storage/v1/object/public/Glenn/kfa25.png" alt="KFA ~25%" /></div>
-              <div class="cf-card-text">
-                <div class="cf-card-title">~25%</div>
-                <div class="cf-card-desc">Etwas weich</div>
-              </div>
-            </button>
-            <button type="button" class="cf-card" data-value="30">
-              <div class="cf-card-img"><img src="https://bzejndghppuipnedasuv.supabase.co/storage/v1/object/public/Glenn/kfa30.png" alt="KFA ~30%" /></div>
-              <div class="cf-card-text">
-                <div class="cf-card-title">~30%</div>
-                <div class="cf-card-desc">Weich</div>
-              </div>
-            </button>
-            <button type="button" class="cf-card" data-value="35">
-              <div class="cf-card-img"><img src="https://bzejndghppuipnedasuv.supabase.co/storage/v1/object/public/Glenn/kfa35.png" alt="KFA ~35%+" /></div>
-              <div class="cf-card-text">
-                <div class="cf-card-title">~35%+</div>
-                <div class="cf-card-desc">Sehr weich</div>
-              </div>
-            </button>
+          <div class="cf-bf-image-wrap">
+            <img id="cf-bf-image" src="https://bzejndghppuipnedasuv.supabase.co/storage/v1/object/public/Glenn/mann.jpg" alt="Körperfettanteil-Übersicht" />
+          </div>
+
+          <div class="cf-field" style="margin-top: 18px;">
+            <label>Dein geschätzter Wert <span class="req">*</span></label>
+            <div class="cf-chips" data-field="bodyfat" data-single="true">
+              <button type="button" class="cf-chip" data-value="10">~10%</button>
+              <button type="button" class="cf-chip" data-value="15">~15%</button>
+              <button type="button" class="cf-chip" data-value="20">~20%</button>
+              <button type="button" class="cf-chip" data-value="25">~25%</button>
+              <button type="button" class="cf-chip" data-value="30">~30%</button>
+              <button type="button" class="cf-chip" data-value="35">~35%+</button>
+            </div>
           </div>
 
           <div class="cf-error" id="cf-err-2">Bitte wähle eine Option.</div>
@@ -1050,6 +1038,10 @@
   const SUPABASE_URL = 'https://jvdozdzvoqzvacqpyynd.supabase.co';
   const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imp2ZG96ZHp2b3F6dmFjcXB5eW5kIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzYwODIzMDksImV4cCI6MjA5MTY1ODMwOX0.ZTSkOPLMP6s0fSYrLYmqlrXiPkV6TfOPDvq8kK-93ow';
 
+  // ---------- KFA Übersichtsbilder (Mann/Frau) ----------
+  const BF_IMG_MALE   = 'https://bzejndghppuipnedasuv.supabase.co/storage/v1/object/public/Glenn/mann.jpg';
+  const BF_IMG_FEMALE = 'https://bzejndghppuipnedasuv.supabase.co/storage/v1/object/public/Glenn/frau.jpg';
+
   const STEP_NAMES = [
     'Über dich',
     'Körperfettanteil',
@@ -1069,6 +1061,7 @@
   const actions = document.getElementById('cf-actions');
   const backBtn = document.getElementById('cf-back');
   const nextBtn = document.getElementById('cf-next');
+  const bfImage = document.getElementById('cf-bf-image');
 
   let currentStep = 0; // 0-indexed, 0..6 = form, 7 = success
   const data = {
@@ -1085,9 +1078,19 @@
     document.body.classList.remove('cf-open');
   }
 
+  // KFA-Bild auf Basis des aktuell gewählten Geschlechts setzen
+  function updateBfImage() {
+    if (!bfImage) return;
+    const target = data.gender === 'female' ? BF_IMG_FEMALE : BF_IMG_MALE;
+    if (bfImage.src !== target) bfImage.src = target;
+  }
+
   function goToStep(i) {
     currentStep = i;
     track.style.transform = `translateX(-${i * 100}%)`;
+
+    // Bevor Slide 2 (KFA, index 1) gezeigt wird: Bild aktualisieren
+    if (i === 1) updateBfImage();
 
     if (i < TOTAL_STEPS) {
       stepNumEl.textContent = i + 1;
@@ -1167,6 +1170,12 @@
     } else {
       group.querySelectorAll('.selected').forEach(el => el.classList.remove('selected'));
       chip.classList.add('selected');
+    }
+
+    // Wenn Geschlecht geändert wird: KFA-Bild sofort vorladen/aktualisieren
+    if (group.dataset.field === 'gender') {
+      data.gender = chip.dataset.value;
+      updateBfImage();
     }
   });
 
